@@ -1,166 +1,5 @@
-<details>
-    <summary>EN</summary>
-    # Local Library System
-    
-    **Local Library System** is a library management system built on PHP, MySQL, and Elasticsearch. The project is designed to manage the process of storing, searching, and lending books.
-    
-    ---
-    
-    ## Technologies
-    
-    - PHP (Backend)
-    - Nginx (Web Server)
-    - MySQL 8 (Database)
-    - Elasticsearch 8 (Search Engine)
-    - Docker & Docker Compose
-    
-    ---
-    
-    ## Architecture
-    
-    ```
-    User (Browser)
-          ↓
-    Nginx (Port 80)
-          ↓
-      PHP-FPM
-          ↓
-       MySQL
-          ↓
-    Elasticsearch
-    ```
-    
-    - `public/` — publicly accessible directory for end users
-    - `private/` — backend logic
-    - `docker/` — container configurations
-    
-    ---
-    
-    ## Getting Started
-    
-    ### 1. Clone the Repository
-    
-    ```bash
-    git clone
-    cd lokallib
-    ```
-    
-    ### 2. Configure the .env File
-    
-    A `.env` file must exist in the project root. Example:
-    
-    ```
-    COMPOSE_PROJECT_NAME=lokallib_project
-    MYSQL_ROOT_PASSWORD=root
-    MYSQL_DATABASE=lokallib
-    MYSQL_USER=lib_user
-    MYSQL_PASSWORD=root
-    ELASTIC_VERSION=8.11.0
-    ES_JAVA_OPTS=-Xms512m -Xmx512m
-    APP_PORT=8080
-    ELASTIC_PORT=9200
-    ```
-    
-    ### 3. Start Docker Containers
-    
-    ```bash
-    docker compose up -d --build
-    ```
-    
-    Verify:
-    
-    ```bash
-    docker compose ps
-    ```
-    
-    ### 4. Access via Browser
-    
-    If `.env` contains `APP_PORT=8080`:
-    
-    ```
-    http://localhost:8080
-    ```
-    
-    ---
-    
-    ## Checking Elasticsearch
-    
-    ```bash
-    curl http://localhost:9200
-    ```
-    
-    Or via browser:
-    
-    ```
-    http://localhost:9200
-    ```
-    
-    ---
-    
-    ## Database
-    
-    MySQL container settings:
-    
-    - **Host:** `db`
-    - **Database:** `lokallib`
-    - **User:** `lib_user`
-    - **Password:** taken from `.env` file
-    
-    ---
-    
-    ## File Structure
-    
-    ```
-    lokallib/
-    │
-    ├── public/
-    │   └── uploads/
-    │
-    ├── private/
-    │
-    ├── docker/
-    │   ├── nginx/
-    │   ├── php/
-    │   ├── mysql/
-    │   └── elasticsearch/
-    │
-    ├── docker-compose.yml
-    ├── .env
-    └── README.md
-    ```
-    
-    ---
-    
-    ## Development Commands
-    
-    Enter a container:
-    
-    ```bash
-    docker exec -it php_app sh
-    ```
-    
-    Stop containers:
-    
-    ```bash
-    docker compose down
-    ```
-    
-    Clean up including volumes:
-    
-    ```bash
-    docker compose down -v
-    ```
-    
-    ---
-    
-    ## Notes
-    
-    - The `public/uploads/` directory must have write permissions.
-    - Strong passwords must be used in production environments.
-    - Elasticsearch security should be configured separately in production.
-</details>
-<details>
-    <summary>UZ</summary>
+UZ
+------------------------------------------------------------------
     # Local Library System
     
     Local Library System --- bu PHP, MySQL va Elasticsearch asosida qurilgan
@@ -194,7 +33,7 @@
     ### 1. Repository ni yuklab olish
     
     ``` bash
-    git clone <repository_url>
+    git clone https://github.com/akbarsalyev03/Locallib.git
     cd lokallib
     ```
     
@@ -313,4 +152,170 @@
     -   Production muhitda kuchli parollar ishlatilishi shart.
     -   Elasticsearch security production'da alohida sozlanadi.
 
-</details>
+
+ EN
+------------------------------------------------------------------
+    # Local Library System
+    
+    **Local Library System** is a library management system built on PHP, MySQL, and Elasticsearch. The project is designed to manage the process of storing, searching, and lending books.
+    
+    ---
+    
+    ## Technologies
+    
+    - PHP (Backend)
+    - Nginx (Web Server)
+    - MySQL 8 (Database)
+    - Elasticsearch 8 (Search Engine)
+    - Docker & Docker Compose
+    
+    ---
+    
+    ## Architecture
+    
+    ```
+    User (Browser)
+          ↓
+    Nginx (Port 80)
+          ↓
+      PHP-FPM
+          ↓
+       MySQL
+          ↓
+    Elasticsearch
+    ```
+    
+    - `public/` — publicly accessible directory for end users
+    - `private/` — backend logic
+    - `docker/` — container configurations
+    
+    ---
+    
+    ## Getting Started
+    
+    ### 1. Clone the Repository
+    
+    ```bash
+    git clone https://github.com/akbarsalyev03/Locallib.git
+    cd lokallib
+    ```
+    
+    ### 2. Configure the .env File
+    
+    A `.env` file must exist in the project root. Example:
+    
+    ```
+    COMPOSE_PROJECT_NAME=lokallib_project
+    MYSQL_ROOT_PASSWORD=root
+    MYSQL_DATABASE=lokallib
+    MYSQL_USER=lib_user
+    MYSQL_PASSWORD=root
+    ELASTIC_VERSION=8.11.0
+    ES_JAVA_OPTS=-Xms512m -Xmx512m
+    APP_PORT=8080
+    ELASTIC_PORT=9200
+    ```
+    
+    ### 3. Start Docker Containers
+    
+    ```bash
+    docker compose up -d --build
+    ```
+    
+    Verify:
+    
+    ```bash
+    docker compose ps
+    ```
+    
+    ### 4. Access via Browser
+    
+    If `.env` contains `APP_PORT=8080`:
+    
+    ```
+    http://localhost:8080
+    ```
+    
+    ---
+    
+    ## Checking Elasticsearch
+    
+    ```bash
+    curl http://localhost:9200
+    ```
+    
+    Or via browser:
+    
+    ```
+    http://localhost:9200
+    ```
+    
+    ---
+    
+    ## Database
+    
+    MySQL container settings:
+    
+    - **Host:** `db`
+    - **Database:** `lokallib`
+    - **User:** `lib_user`
+    - **Password:** taken from `.env` file
+    
+    ---
+    
+    ## File Structure
+    
+    ```
+    lokallib/
+    │
+    ├── public/
+    │   └── uploads/
+    │
+    ├── private/
+    │
+    ├── docker/
+    │   ├── nginx/
+    │   ├── php/
+    │   ├── mysql/
+    │   └── elasticsearch/
+    │
+    ├── docker-compose.yml
+    ├── .env
+    └── README.md
+    ```
+    
+    ---
+    
+    ## Development Commands
+    
+    Enter a container:
+    
+    ```bash
+    docker exec -it php_app sh
+    ```
+    
+    Stop containers:
+    
+    ```bash
+    docker compose down
+    ```
+    
+    Clean up including volumes:
+    
+    ```bash
+    docker compose down -v
+    ```
+    
+    ---
+    
+    ## Notes
+    
+    - The `public/uploads/` directory must have write permissions.
+    - Strong passwords must be used in production environments.
+    - Elasticsearch security should be configured separately in production.
+
+------------------------------------------------------------------
+
+License
+------------------------------------------------------------------
+MIT
