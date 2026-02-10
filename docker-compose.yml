@@ -1,0 +1,59 @@
+version: "3.9"
+
+services:
+  nginx:
+    build: ./docker/nginx
+    container_name: nginx_server
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www
+    depends_on:
+      - php
+    networks:
+      - project_network
+
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: php_app
+    volumes:
+      - .:/var/www
+    networks:
+      - project_network
+
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - project_network
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}
+    container_name: elastic_search
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=${ES_JAVA_OPTS}
+    ports:
+      - "${ELASTIC_PORT}:9200"
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+    networks:
+      - project_network
+
+volumes:
+  db_data:
+  es_data:
+
+networks:
+  project_network:
+    driver: bridge
